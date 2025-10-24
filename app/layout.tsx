@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import "./globals.css";
-import {ReactNode} from "react";
+import {ReactNode, Suspense} from "react";
 import Image from "next/image";
 import {UserPicker} from "@/lib/components/user-picker";
 
@@ -27,8 +27,9 @@ export default function RootLayout({
       >
         <header className="sticky top-0 flex flex-row items-center" >
           <Image src="/sp.svg" width={235} height={40} alt="ScottishPower logo" className="m-2" />
-
-          <UserPicker />
+          <Suspense>
+            <UserPicker />
+          </Suspense>
         </header>
         <main className="min-h-screen mx-auto w-[70ch]" >
           {children}
