@@ -23,9 +23,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${roboto.variable} antialiased p-2`}
+        className={`@container/root ${roboto.variable} antialiased p-2`}
       >
-        <header className="sticky top-0 flex flex-row items-center" >
+        <header className="sticky top-0 flex flex-col @sm/root:flex-row items-center" >
           <Image src="/sp.svg" width={235} height={40} alt="ScottishPower logo" className="m-2" />
           <Suspense>
             <UserPicker />
