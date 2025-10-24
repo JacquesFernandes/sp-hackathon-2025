@@ -1,6 +1,7 @@
 import {FC, ReactNode, Suspense} from "react";
 import Image from "next/image";
 import {UserPicker} from "@/lib/components/user-picker";
+import Link from "next/link";
 
 export type PageLayoutProps = {
   children: ReactNode;
@@ -10,7 +11,9 @@ export type PageLayoutProps = {
 export const PageLayout: FC<PageLayoutProps> = ({ showPicker, children }) => {
   return <>
     <header className="sticky top-0 flex flex-col @md/root:flex-row items-center" >
-      <Image src="/sp.svg" width={235} height={40} alt="ScottishPower logo" className="m-2" />
+      <Link href="/" >
+        <Image src="/sp.svg" width={235} height={40} alt="ScottishPower logo" className="m-2" />
+      </Link>
       {
         showPicker
           ? (
