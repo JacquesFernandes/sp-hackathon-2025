@@ -31,7 +31,7 @@ export default function RootLayout({
             <UserPicker />
           </Suspense>
         </header>
-        <main className="min-h-screen mx-auto w-[70ch]" >
+        <main className="min-h-screen mx-auto max-w-[70ch]" >
           {children}
         </main>
       </body>
