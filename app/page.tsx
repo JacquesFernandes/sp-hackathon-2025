@@ -26,7 +26,7 @@ export default async function Home({ searchParams }: HomeProps) {
     <div className="min-h-screen w-full flex flex-col justify-center items-center gap-2" >
       <h2 className="w-full text-3xl text-gray-800" >How can we help?</h2>
 
-      <form className="w-full" method="GET" action="/results" >
+      <form className="w-full" method="GET" action="/search" >
         <div className="w-full flex flex-row gap-2" >
           <input
             type="text"
