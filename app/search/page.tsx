@@ -8,6 +8,7 @@ import {SearchPersonalisation} from "@/lib/components/search-personalisation";
 import {SearchSummaryRag} from "@/lib/components/search-summary-rag";
 import {SearchLinks} from "@/lib/components/search-links";
 import {SearchLink} from "@/lib/types/search-link";
+import {SearchIntro} from "@/lib/components/search-intro";
 
 type SearchPageProps = ServerSearchProps;
 
@@ -37,6 +38,8 @@ export default async function SearchPage(props: SearchPageProps) {
         <Search />
       </SearchButton>
     </form>
+
+    <SearchIntro />
 
     <SearchPersonalisation content={searchPersonalisationContent} />
 
