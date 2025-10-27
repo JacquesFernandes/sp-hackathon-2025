@@ -1,4 +1,1 @@
-export type SearchLink = {
-  label: string;
-  url: string;
-};
+export type SearchLink = string;

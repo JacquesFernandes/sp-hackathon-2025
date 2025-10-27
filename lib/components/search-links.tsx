@@ -23,8 +23,8 @@ export const SearchLinks: FC<SearchLinksProps> = ({ links, loading }) => {
           : <>
             <ul className="list-inside text-blue-500 *:active:text-blue-800 cursor-pointer" >
               {
-                links.map(({ label, url }) => <li key={label} >
-                  <a className="flex flex-row items-center gap-1" href={url} ><span>{label}</span> <ExternalLink size="18" /></a>
+                links.map((url) => <li key={url} >
+                  <a className="flex flex-row items-center gap-1" href={url} ><span>{url}</span> <ExternalLink size="18" /></a>
                 </li>)
               }
             </ul>
