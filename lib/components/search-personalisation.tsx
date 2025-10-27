@@ -1,6 +1,7 @@
 import {FC} from "react";
 import {UserRoundIcon} from 'lucide-react';
 import Skeleton from "react-loading-skeleton";
+import Markdown from 'react-markdown';
 
 export type SearchPersonalisationProps = {
   content: string;
@@ -17,7 +18,7 @@ export const SearchPersonalisation: FC<SearchPersonalisationProps> = ({ content,
 
     <div className="mt-1 text-green-800 flex flex-col gap-1" >
       {
-        loading ? <Skeleton count={5} /> : <p>{ content }</p>
+        loading ? <Skeleton count={5} /> : <Markdown>{ content }</Markdown>
       }
     </div>
   </section>
