@@ -3,6 +3,7 @@
 import {ChangeEventHandler, FC, useCallback, useState} from "react";
 import {Users2} from 'lucide-react';
 import {useSearchParams} from "next/navigation";
+import {personaUserIds} from "@/lib/data/persona-user-ids";
 
 export type UserPickerProps = {};
 
@@ -30,9 +31,11 @@ export const UserPicker: FC<UserPickerProps> = (props) => {
       onChange={handleChange}
     >
       <option value="" >Anonymous</option>
-      <option value="Jett Neon" >Jett Neon</option>
-      <option value="Violet Volt" >Violet Volt</option>
-      <option value="Basil Boxley" >Basil Boxley</option>
+      {
+        personaUserIds.map((name) => <option key={name} value={name} >
+          {name}
+        </option>)
+      }
     </select>
 
     <button
