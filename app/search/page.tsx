@@ -16,7 +16,7 @@ type SearchPageProps = ServerSearchProps;
 export default async function SearchPage(props: SearchPageProps) {
   const { query, persona } = await getDataFromServerSearchProps(props);
 
-  const { personalisationContent, summaryRagContent, links } = await search();
+  const { personalisationContent, summaryRagContent, links } = await search({ userId: persona, query, });
 
   return <PageLayout>
     <form className="w-full flex flex-row gap-2" method="GET" action="/search"  >
@@ -29,9 +29,7 @@ export default async function SearchPage(props: SearchPageProps) {
 
     <SearchIntro />
 
-    <SearchPersonalisation
-      content={personalisationContent}
-    />
+    {personalisationContent && <SearchPersonalisation content={personalisationContent}/>}
 
     <SearchSummaryRag
       content={summaryRagContent}

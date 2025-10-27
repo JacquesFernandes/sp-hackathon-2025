@@ -18,7 +18,7 @@ export const SearchPersonalisation: FC<SearchPersonalisationProps> = ({ content,
 
     <div className="mt-1 text-green-800 flex flex-col gap-1" >
       {
-        loading ? <Skeleton count={5} /> : <Markdown>{ content }</Markdown>
+        loading ? <Skeleton count={3} /> : <Markdown>{ content }</Markdown>
       }
     </div>
   </section>

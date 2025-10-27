@@ -1,28 +1,27 @@
 'use server';
 
 import {SearchLink} from "@/lib/types/search-link";
+import {personas} from "@/lib/data/personas";
+
+type SearchQuery = {
+  userId?: string;
+  query?: string;
+}
 
 type SearchResult = {
-  personalisationContent: string;
+  personalisationContent?: string;
   summaryRagContent: string;
   links: SearchLink[];
 }
 
-export async function search(): Promise<SearchResult> {
-  const searchPersonalisationContent = "Proin at augue vel odio interdum lobortis at at sapien. Nam a gravida leo, eget pretium urna. Nunc auctor auctor metus quis accumsan. Quisque quis facilisis risus. Suspendisse lobortis tincidunt fermentum. Aenean id neque vel dui imperdiet mollis congue at diam. Sed at aliquet sem.";
+export async function search(query: SearchQuery): Promise<SearchResult> {
+  const persona = personas.find((persona) => persona.name === query.userId);
 
-  const searchSummaryRagContent = "Proin at augue vel odio interdum lobortis at at sapien. Nam a gravida leo, eget pretium urna. Nunc auctor auctor metus quis accumsan. Quisque quis facilisis risus. Suspendisse lobortis tincidunt fermentum. Aenean id neque vel dui imperdiet mollis congue at diam. Sed at aliquet sem.";
+  const searchPersonalisationContent = persona?.personalisationMessage;
 
-  const links: SearchLink[] = [
-    {
-      label: "ScottishPower",
-      url: "https://www.scottishpower.co.uk/search",
-    },
-    {
-      label: "Google",
-      url: "https://www.google.com/search",
-    }
-  ];
+  const searchSummaryRagContent = persona?.summaryRag ?? '';
+
+  const links: SearchLink[] = persona?.links ?? [];
 
   await new Promise((resolve) => setTimeout(resolve, 2000));
 
