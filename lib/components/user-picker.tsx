@@ -29,12 +29,10 @@ export const UserPicker: FC<UserPickerProps> = (props) => {
       className={`transition-all duration-100 overflow-hidden ${isChoiceAvailable ? 'w-fit' : 'w-0'} ${isChoiceAvailable ? 'mx-1 ml-1.5' : ''}`}
       onChange={handleChange}
     >
-      <option value="" >Select persona</option>
-      <option value="anonymous" >Anonymous</option>
-      <option value="persona1" >Persona 1</option>
-      <option value="persona2" >Persona 2</option>
-      <option value="persona3" >Persona 3</option>
-      <option value="persona4" >Persona 4</option>
+      <option value="" >Anonymous</option>
+      <option value="Jett Neon" >Jett Neon</option>
+      <option value="Violet Volt" >Violet Volt</option>
+      <option value="Basil Boxley" >Basil Boxley</option>
     </select>
 
     <button
