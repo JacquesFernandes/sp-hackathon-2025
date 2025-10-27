@@ -8,7 +8,7 @@ import {SearchButton} from "@/lib/components/search-button";
 type HomeProps = ServerSearchProps;
 
 export default async function Home(props: HomeProps) {
-  const { search, persona } = await getDataFromServerSearchProps(props);
+  const { query, persona } = await getDataFromServerSearchProps(props);
 
   return <PageLayout showPicker >
     <div className="min-h-screen w-full flex flex-col justify-center items-center gap-2" >
@@ -16,7 +16,7 @@ export default async function Home(props: HomeProps) {
 
       <form className="w-full" method="GET" action="/search" >
         <div className="w-full flex flex-row gap-2" >
-          <SearchInput defaultValue={search} />
+          <SearchInput defaultValue={query} />
           <input type="hidden" name="persona" value={persona} />
           <SearchButton>
             <ArrowRight />

@@ -2,20 +2,20 @@ import {ServerSearchProps} from "@/lib/types/server-search-props";
 
 type SearchParamData = {
   persona: string;
-  search: string;
+  query: string;
 }
 
 export const getDataFromServerSearchProps = async ({ searchParams }: ServerSearchProps): Promise<SearchParamData> => {
   const awaitedSearchParams = await searchParams;
 
-  const possiblePersona = awaitedSearchParams['persona'];
+  const possiblePersona = awaitedSearchParams?.['persona'];
   const persona = possiblePersona === undefined
     ? 'anonymous'
     : Array.isArray(possiblePersona)
       ? possiblePersona[0]
       : possiblePersona;
 
-  const possibleSearch = awaitedSearchParams['search'];
+  const possibleSearch = awaitedSearchParams?.['search'];
   const search = possibleSearch === undefined
     ? ''
     : Array.isArray(possibleSearch)
@@ -24,6 +24,6 @@ export const getDataFromServerSearchProps = async ({ searchParams }: ServerSearc
 
   return {
     persona,
-    search,
+    query: search,
   };
 };
