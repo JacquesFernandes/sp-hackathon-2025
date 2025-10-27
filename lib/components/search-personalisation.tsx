@@ -5,7 +5,7 @@ export type SearchPersonalisationProps = {};
 
 export const SearchPersonalisation: FC<SearchPersonalisationProps> = ({}) => {
   return <section id="search-personalisation" className="border-2 border-green-300 rounded-3xl bg-green-50 p-3 mt-3 " >
-    <div className="w-full flex flex-row justify-start items-center text-green-600" >
+    <div className="w-full flex flex-row gap-2 justify-start items-center text-green-600" >
       <UserRoundIcon />
 
       <h2>You</h2>
