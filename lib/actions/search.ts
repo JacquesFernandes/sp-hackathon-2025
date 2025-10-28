@@ -1,8 +1,8 @@
 'use server';
 
 import {SearchLink} from "@/lib/types/search-link";
-import {personas} from "@/lib/data/personas";
 import {redirect} from "next/navigation";
+import {personaUserIds} from "@/lib/data/persona-user-ids";
 
 type AiRequestData = {
   search_topic: string;
@@ -44,8 +44,14 @@ export async function search(query: SearchQuery): Promise<SearchResult> {
     throw new Error('Something wrong with response: ' + JSON.stringify(json));
   }
 
+  const personalisationContent = personaUserIds.includes(query.userId ?? '')
+    ? json.personalised.trim() === ''
+      ? 'No personalised results available'
+      : json.personalised.trim()
+    : 'Please login to see personalised results';
+
   return {
-    personalisationContent: json.personalised,
+    personalisationContent,
     summaryRagContent: json.summary,
     links: json.links,
   };
