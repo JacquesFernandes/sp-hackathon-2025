@@ -2,6 +2,12 @@
 
 import {SearchLink} from "@/lib/types/search-link";
 import {personas} from "@/lib/data/personas";
+import {redirect} from "next/navigation";
+
+type AiRequestData = {
+  search_topic: string;
+  user_id?: string;
+};
 
 type SearchQuery = {
   userId?: string;
@@ -15,19 +21,32 @@ type SearchResult = {
 }
 
 export async function search(query: SearchQuery): Promise<SearchResult> {
-  const persona = personas.find((persona) => persona.name === query.userId);
+  if (process.env.INVOCATION_ENDPOINT === undefined) {
+    throw new Error('INVOCATION_ENDPOINT environment variable must be defined.');
+  }
 
-  const searchPersonalisationContent = persona?.personalisationMessage;
+  if (query.query === undefined || query.query.trim() === '') {
+    return redirect('/');
+  }
 
-  const searchSummaryRagContent = persona?.summaryRag ?? '';
+  const aiRequestData: AiRequestData = {
+    search_topic: query.query.trim(),
+  };
 
-  const links: SearchLink[] = persona?.links ?? [];
+  if (query.userId?.trim() !== '') {
+    aiRequestData.user_id = query.userId;
+  }
 
-  await new Promise((resolve) => setTimeout(resolve, 2000));
+  const response = await fetch(process.env.INVOCATION_ENDPOINT, { method: 'POST', body: JSON.stringify(aiRequestData) });
+  const json = await response.json();
+
+  if (typeof json !== 'object' || typeof json.personalised !== 'string' || typeof json.summary !== 'string' || !Array.isArray(json.links)) {
+    throw new Error('Something wrong with response: ' + JSON.stringify(json));
+  }
 
   return {
-    personalisationContent: searchPersonalisationContent,
-    summaryRagContent: searchSummaryRagContent,
-    links: links,
+    personalisationContent: json.personalised,
+    summaryRagContent: json.summary,
+    links: json.links,
   };
 }
