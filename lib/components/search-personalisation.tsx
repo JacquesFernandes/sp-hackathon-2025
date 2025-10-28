@@ -13,7 +13,7 @@ export const SearchPersonalisation: FC<SearchPersonalisationProps> = ({ content,
     <div className="w-full flex flex-row gap-2 justify-start items-center text-green-600" >
       <UserRoundIcon />
 
-      <h2>About you</h2>
+      <h2>Personalised results</h2>
     </div>
 
     <div className="mt-1 text-green-800 flex flex-col gap-1" >

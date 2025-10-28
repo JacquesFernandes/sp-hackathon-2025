@@ -13,7 +13,7 @@ export const SearchLinks: FC<SearchLinksProps> = ({ links, loading }) => {
   return <section id="search-summary-rag" className="p-3 mt-3">
     <div className="w-full flex flex-row gap-2 justify-start items-center" >
       <Link />
-      <h2>My sources:</h2>
+      <h2>References</h2>
     </div>
 
     <div className="mt-1 flex flex-col gap-1" >
