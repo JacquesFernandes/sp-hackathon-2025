@@ -10,7 +10,7 @@ export const getDataFromServerSearchProps = async ({ searchParams }: ServerSearc
 
   const possiblePersona = awaitedSearchParams?.['persona'];
   const persona = possiblePersona === undefined
-    ? 'anonymous'
+    ? ''
     : Array.isArray(possiblePersona)
       ? possiblePersona[0]
       : possiblePersona;
