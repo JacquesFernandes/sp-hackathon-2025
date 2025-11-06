@@ -4,6 +4,7 @@ import {getDataFromServerSearchProps} from "@/lib/get-data-from-server-search-pr
 import {ServerSearchProps} from "@/lib/types/server-search-props";
 import {SearchInput} from "@/lib/components/search-input";
 import {SearchButton} from "@/lib/components/search-button";
+import {defaultPersonaId} from "@/lib/data/default-persona-id";
 
 type HomeProps = ServerSearchProps;
 
@@ -17,7 +18,7 @@ export default async function Home(props: HomeProps) {
       <form className="w-full" method="GET" action="/search" >
         <div className="w-full flex flex-row gap-2" >
           <SearchInput defaultValue={query} />
-          <input type="hidden" name="persona" value={persona} />
+          <input type="hidden" name="persona" value={persona || defaultPersonaId} />
           <SearchButton>
             <ArrowRight />
           </SearchButton>

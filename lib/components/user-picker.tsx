@@ -30,7 +30,6 @@ export const UserPicker: FC<UserPickerProps> = (props) => {
       className={`transition-all duration-100 overflow-hidden ${isChoiceAvailable ? 'w-fit' : 'w-0'} ${isChoiceAvailable ? 'mx-1 ml-1.5' : ''}`}
       onChange={handleChange}
     >
-      <option value="" >Anonymous</option>
       {
         personaUserIds.map((name) => <option key={name} value={name} >
           {name}
