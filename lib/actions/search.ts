@@ -6,7 +6,7 @@ import {SearchResult} from "@/lib/types/search-result";
 import {buildFacade} from "@/lib/facade/builder";
 
 export async function search(query: SearchQuery): Promise<SearchResult> {
-  if (process.env.INVOCATION_ENDPOINT === undefined) {
+  if (process.env.APP_ENV !== 'test' && process.env.INVOCATION_ENDPOINT === undefined) {
     throw new Error('INVOCATION_ENDPOINT environment variable must be defined.');
   }
 
